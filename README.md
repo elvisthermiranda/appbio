@@ -17,7 +17,9 @@ Siga estas etapas para configurar esta aplicação em seu ambiente de desenvolvi
 2. **Instalação:**
    - Clone este repositório:
      ```
-     git clone https://github.com/elvisthermiranda/appbio.git
+     1º git clone https://github.com/elvisthermiranda/appbio.git
+     2º composer update
+     3º npm update
      ```
 
 3. **Configuração do Ambiente:**
