@@ -76,9 +76,10 @@ Aqui estão os passos para implantar este aplicativo em um ambiente de produçã
      php artisan route:cache
      ```
 
-5. **Configuração do Supervisor (opcional):**
+5. **Configuração de filas e Supervisor (opcional):**
    - Se você estiver executando tarefas em segundo plano que precisam ser monitoradas e gerenciadas, como filas de trabalhos (queues), pode ser útil configurar o Supervisor para garantir que esses processos estejam sempre em execução, basta seguir o tutorial da documentação abaixo.
      ```
+     https://laravel.com/docs/10.x/queues
      https://laravel.com/docs/10.x/queues#supervisor-configuration
      ```
 
@@ -93,7 +94,7 @@ Aqui estão os passos para implantar este aplicativo em um ambiente de produçã
      ```
 
 8. **Atualização das Permissões:**
-   - Certifique-se de que as permissões corretas estejam definidas para os arquivos e diretórios do Laravel, conforme necessário.
+   - Certifique-se de que as permissões corretas estejam definidas para os arquivos e diretórios da aplicação, conforme necessário.
 
 9. **Execução das Migrações e Seeders:**
     - Se você estiver usando migrações e seeders, execute-os no servidor de produção:
