@@ -1,0 +1,94 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Visualizar Usuário
+        </h2>
+    </x-slot>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+            <x-secondary-button type="button" x-data="{route: '{{ url()->previous() }}'}" x-on:click="window.location.href=route">
+                <i class="fa-solid fa-circle-chevron-left"></i>&nbsp;Voltar
+            </x-secondary-button>
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg dark:bg-gray-800">
+                <div class="max-w-xl">
+                    @if (session('success'))
+                        <x-alert type="success" bordered="true" header="Pronto!">
+                            {{ session('success') }}
+                        </x-alert>
+                    @endif
+                    <div class="mt-6 space-y-6">
+                        <div>
+                            <x-input-label for="name" :value="__('Nome')" />
+                            <x-text-input disabled id="name" name="name" value="{{ $usuario->name }}" class="mt-1 block w-full" />
+                        </div>
+                        <div>
+                            <x-input-label for="data_nascimento" :value="__('Data de nascimento')" />
+                            <x-text-input disabled id="data_nascimento" name="data_nascimento" value="{{ date('d/m/Y', strtotime($usuario->data_nascimento)) }}" class="mt-1 block w-full" />
+                        </div>
+                        <div>
+                            <x-input-label for="altura" :value="__('Altura')" />
+                            <x-text-input disabled id="altura" name="altura" value="{{ $usuario->altura }}" class="mt-1 block w-full" />
+                        </div>
+                        <div>
+                            <x-input-label for="email" :value="__('Email')" />
+                            <x-text-input disabled id="email" name="email" value="{{ $usuario->email }}" class="mt-1 block w-full" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @can('editar.usuarios')
+                <x-primary-button
+                    type="button"
+                    x-data="{route: '{{ route('admin.users.edit', ['user' => $usuario->id]) }}'}"
+                    x-on:click="window.location.href=route"
+                >
+                    <i class="fa-solid fa-pen-to-square"></i>&nbsp;Editar
+                </x-primary-button>
+            @endcan
+
+            @can('excluir.usuarios')
+                <x-danger-button type="button" x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">
+                    <i class="fa-solid fa-trash"></i>&nbsp;Excluir
+                </x-primary-button>
+            @endcan
+        </div>
+    </div>
+
+    @can('excluir.usuarios')
+        <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
+            <form action="{{ route('admin.users.destroy', ['user' => $usuario->id]) }}" method="post" class="p-6">
+                @csrf
+                @method('DELETE')
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ __('Você tem certeza de que deseja excluir?') }}
+                </h2>
+                <p class="mt-1 text-sm text-gray-600">
+                    {{ __('Uma vez que for excluída, todos os seus recursos e dados serão apagados permanentemente. Por favor, digite sua senha para confirmar que deseja excluir permanentemente esta conta.') }}
+                </p>
+                <div class="mt-6">
+                    <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+
+                    <x-text-input
+                        id="password"
+                        name="password"
+                        type="password"
+                        class="mt-1 block w-3/4"
+                        placeholder="{{ __('Senha') }}"
+                    />
+
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+
+                <div class="mt-6 flex justify-end">
+                    <x-secondary-button x-on:click="$dispatch('close')">
+                        <i class="fa-solid fa-xmark"></i>&nbsp;{{ __('Cancelar') }}
+                    </x-secondary-button>
+
+                    <x-danger-button class="ml-3">
+                        <i class="fa-solid fa-trash"></i>&nbsp;{{ __('Sim, excluir esta conta.') }}
+                    </x-danger-button>
+                </div>
+            </form>
+        </x-modal>
+    @endcan
+</x-app-layout>

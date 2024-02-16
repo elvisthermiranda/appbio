@@ -1,0 +1,1 @@
+<img src="{{ asset('icone-sante-rouge.png') }}" class="w-16" alt="">
