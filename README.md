@@ -53,6 +53,7 @@ Aqui estão os passos para implantar este aplicativo em um ambiente de produçã
    ```
    https://laravel.com/docs/10.x/deployment
    ```
+   para verificar os módulos instalados `php --modules ou php -m`
 
 2. **Configuração do Banco de Dados:**
    - Configure seu banco de dados no arquivo `.env` do servidor de produção.
@@ -102,3 +103,4 @@ Aqui estão os passos para implantar este aplicativo em um ambiente de produçã
 ---
 
 Este guia deve ajudá-lo a instalar e implantar este aplicativo tanto em ambientes de desenvolvimento quanto de produção.
+Obs.: Ao executar as migratios e os seeders, vai ser criado um usuário administrador `superadmin@email.com.br` e a senha é `password`, não se esqueça de alterá-los.
