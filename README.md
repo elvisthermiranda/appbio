@@ -17,10 +17,18 @@ Siga estas etapas para configurar esta aplicação em seu ambiente de desenvolvi
 2. **Instalação:**
    - Clone este repositório:
      ```
-     1º git clone https://github.com/elvisthermiranda/appbio.git
-     2º composer update
-     3º npm update
+     git clone https://github.com/elvisthermiranda/appbio.git
      ```
+   - Instale as dependências com composer:
+     ```
+     composer install
+     composer update
+     ```
+   - Instale as dependências com npm:
+      ```
+      npm install
+      npm update
+      ```
 
 3. **Configuração do Ambiente:**
    - Renomeie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente necessárias, como conexão com banco de dados.
