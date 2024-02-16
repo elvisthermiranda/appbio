@@ -29,7 +29,13 @@ Siga estas etapas para configurar esta aplicação em seu ambiente de desenvolvi
      php artisan key:generate
      ```
 
-5. **Executando o Servidor de Desenvolvimento:**
+5. **Execução das Migrações e Seeders:**
+    - Se você estiver usando migrações e seeders, execute-os no servidor de produção:
+      ```
+      php artisan migrate --seed
+      ```
+
+6. **Executando o Servidor de Desenvolvimento:**
    - Inicie o servidor de desenvolvimento:
      ```
      php artisan serve
