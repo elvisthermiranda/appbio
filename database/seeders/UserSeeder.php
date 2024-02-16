@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(20)->create();
+        $users = \App\Models\User::factory(20)->create();
+
+        $users->each(fn($user) => $user->syncRoles(Role::findByName('Paciente')));
     }
 }

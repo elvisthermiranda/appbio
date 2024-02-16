@@ -34,6 +34,10 @@ Siga estas etapas para configurar esta aplicação em seu ambiente de desenvolvi
       ```
       php artisan migrate --seed
       ```
+    - Caso queira cadastrar alguns pacientes fictícios:
+    ```
+    php artisan db:seed --class=UserSeeder
+    ```
 
 6. **Executando o Servidor de Desenvolvimento:**
    - Inicie o servidor de desenvolvimento:
