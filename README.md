@@ -34,7 +34,7 @@ Siga estas etapas para configurar esta aplicação em seu ambiente de desenvolvi
       ```
       php artisan migrate --seed
       ```
-    - Caso queira cadastrar alguns pacientes fictícios:
+    - Caso queira cadastrar alguns pacientes fictícios (senha `password`):
     ```
     php artisan db:seed --class=UserSeeder
     ```
